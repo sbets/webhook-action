@@ -1,6 +1,6 @@
 #!/bin/sh
 set -eu
 
-echo $data
+echo $microservice
 
-curl -v -H "Content-Type: application/json" -X POST -d \'$data\' $WEBHOOK_URL
+curl -v -H "Content-Type: application/json" -X POST -d '{ \"microservice\": \"$microservice\" }' $WEBHOOK_URL
