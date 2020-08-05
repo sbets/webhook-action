@@ -3,4 +3,4 @@ set -eu
 
 echo $data
 
-curl -v -X POST -H "Content-Type: application/json" -d \"$data\" $WEBHOOK_URL
+curl -v -H "Content-Type: application/json" -X POST -d '{ "microservice":"dsign"}' $WEBHOOK_URL
