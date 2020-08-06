@@ -1,14 +1,5 @@
 #!/bin/sh
 set -eu
+json_data=$(echo $data | tr -d '"')
 
-echo $data
-
-#json_data="{\"data\": $data}"
-
-echo $data | jq .microservice
-varr=$(echo $data | tr -d '"')
-echo "{ \"data\": ${varr} }"
-
-curl -v -X POST -H "Content-Type: application/json" --data "{ \"data\": ${varr} }" $WEBHOOK_URL
-
-#"{ \"data\": \"$data\" }"
+curl -v -X POST -H "Content-Type: application/json" --data "{ \"data\": ${json_data} }" $WEBHOOK_URL
