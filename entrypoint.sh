@@ -6,8 +6,9 @@ echo $data
 #json_data="{\"data\": $data}"
 
 echo $data | jq .microservice
-echo '{ \"data\": "'"$data"'" }'
+varr=$(echo $data | tr -d '"')
+echo "{ \"data\": ${varr} }"
 
-curl -v -X POST -H "Content-Type: application/json" --data '{ \"data\": "'"$data"'" }' $WEBHOOK_URL
+curl -v -X POST -H "Content-Type: application/json" --data "{ \"data\": ${varr} }" $WEBHOOK_URL
 
 #"{ \"data\": \"$data\" }"
