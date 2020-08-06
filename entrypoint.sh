@@ -1,5 +1,5 @@
 #!/bin/sh
 set -eu
-json_data=$(echo $data | tr -d '"')
+json_data=${data%"\""}
 
 curl -v -X POST -H "Content-Type: application/json" --data "{ \"data\": ${json_data} }" $WEBHOOK_URL
